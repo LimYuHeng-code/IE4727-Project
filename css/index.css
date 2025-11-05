@@ -1,0 +1,237 @@
+body{
+    background-image: url(../img/bg001.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 30%;   /* shift focus upward */
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+.full-height {
+
+    background-attachment: fixed;
+}
+table{
+    width: 100%;
+    padding-top: 5px;
+    
+}
+.heading-text{
+    color: white;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 63px;
+    margin-top: 15%;
+    text-align: center;
+    margin-bottom: 0;
+    margin-left: 6%;
+}
+
+.sub-text2{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 17px;
+    line-height: 27px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 10%; 
+}
+
+
+.register-btn{
+    background-color: rgba(240, 248, 255, 0.589);
+    color: #345cc4;
+}
+
+
+.edoc-logo{
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 20px;
+    animation: transitionIn-Y-over 0.5s;
+}
+
+.edoc-logo-sub{
+    color: rgba(255, 255, 255, 0.733);
+    font-size: 12px;
+
+}
+
+
+.nav-item{
+    color: rgba(255, 255, 255, 0.671);
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    animation: transitionIn-Y-over 0.5s;
+}
+
+.nav-item:hover{
+    color: #f0f0f0;
+
+}
+
+.footer-hashen {
+    position: absolute;
+    bottom: 10px;            /* keeps it slightly above bottom edge */
+    left: 50%;               /* move its left edge to the horizontal center */
+    transform: translateX(-50%); /* shift it back by half its own width */
+    font-size: 13px;
+
+}
+
+/* --- sticky footer layout --- */
+html, body { height: 100%; }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.page { flex: 1 0 auto; }     /* pushes footer to the bottom */
+
+/* --- footer --- */
+.site-footer {
+  text-align: center;
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  padding: 16px 12px;
+  background: rgba(0,0,0,0.28);  /* subtle strip so it’s readable */
+  backdrop-filter: blur(2px);
+}
+
+
+
+/* Smooth in-page anchor scrolling */
+html { scroll-behavior: smooth; }
+
+
+/* Generic section layout */
+.section {
+  background: transparent;            /* faint backdrop so it separates from hero */
+  padding: 450px 20px;
+}
+.section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.section-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 8px;
+}
+.section-subtitle {
+  color: rgba(255,255,255,.65);
+  text-align: center;
+  margin: 0 auto 28px;
+  max-width: 720px;
+  font-size: 16px;
+}
+
+/* Doctors grid */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 1100px){
+  .doctors-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px){
+  .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  .doctors-grid { grid-template-columns: 1fr; }
+}
+
+/* Doctor card */
+.doctor-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  padding: 18px;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  transition: transform .15s ease, border-color .15s ease;
+  object-fit: cover;
+  object-position: center;
+  min-height: 420px; 
+}
+
+.doctor-bio {
+  color: #F4F5F0;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin: 10px 0 16px;
+  text-align: left;
+}
+
+
+
+.doctor-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.24);
+}
+.doctor-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.doctor-name {
+  color: #fff;
+  font-size: 18px;
+  margin: 6px 0;
+}
+.doctor-role {
+  color: rgba(255,255,255,.7);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+/* Buttons inside cards */
+.btn-line {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 8px;
+  color: #e8e8e8;
+  margin-right: 8px;
+}
+.btn-line:hover { background: rgba(255,255,255,.08); }
+
+.btn-primary-small {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #1a73e8;
+  color: #fff;
+}
+.btn-primary-small:hover { filter: brightness(1.05); }
+
+/* One mask for the whole page */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(26,26,26,.55);  /* same tone as your hero */
+  pointer-events: none;     /* clicks go through */
+  z-index: 0;
+}
+
+/* Make sure page content sits above the overlay */
+.full-height,
+.section,
+footer {
+  position: relative;
+  z-index: 1;
+}
