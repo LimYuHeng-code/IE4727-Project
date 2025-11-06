@@ -1,30 +1,36 @@
 <?php
+session_start();
+include("../connection.php");
 
-    session_start();
+if (isset($_POST["shedulesubmit"])) {
+    $title = $_POST['title'];
+    $docid = $_POST['docid'];
+    $nop = $_POST['nop'];
+    $dates = $_POST['date'];
+    $times = $_POST['time'];
 
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
+    $inserted = 0;
+
+    for ($i = 0; $i < count($dates); $i++) {
+        $date = $dates[$i];
+        $time = $times[$i];
+
+        // Prevent duplicate session for same doctor/date/time
+        $check = $database->query("SELECT * FROM schedule 
+                                   WHERE docid='$docid' 
+                                   AND scheduledate='$date' 
+                                   AND scheduletime='$time'");
+        if ($check->num_rows == 0) {
+            $database->query("INSERT INTO schedule (title, docid, scheduledate, scheduletime, nop)
+                              VALUES ('$title', '$docid', '$date', '$time', '$nop')");
+            $inserted++;
         }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-    
-    if($_POST){
-        //import database
-        include("../connection.php");
-        $title=$_POST["title"];
-        $docid=$_POST["docid"];
-        $nop=$_POST["nop"];
-        $date=$_POST["date"];
-        $time=$_POST["time"];
-        $sql="insert into schedule (docid,title,scheduledate,scheduletime,nop) values ($docid,'$title','$date','$time',$nop);";
-        $result= $database->query($sql);
-        header("location: schedule.php?action=session-added&title=$title");
-        
     }
 
-
+    header("Location: schedule.php?action=session-added&title=" . urlencode($title));
+    exit();
+} else {
+    header("Location: schedule.php");
+    exit();
+}
 ?>
