@@ -432,7 +432,7 @@
             $spcil_res = $stmt->get_result();
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
+            $mcr=$row['docmcr'];
             $tele=$row['doctel'];
             echo '
             <div id="popup1" class="overlay">
@@ -482,7 +482,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$nic.'<br><br>
+                                '.$mcr.'<br><br>
                                 </td>
                             </tr>
                             <tr>

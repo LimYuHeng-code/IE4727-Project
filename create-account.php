@@ -48,7 +48,7 @@ if($_POST){
     $lname=$_SESSION['personal']['lname'];
     $name=$fname." ".$lname;
     $address=$_SESSION['personal']['address'];
-    $nic=$_SESSION['personal']['nic'];
+    $nric=$_SESSION['personal']['nric'];
     $dob=$_SESSION['personal']['dob'];
     $email=$_POST['newemail'];
     $tele=$_POST['tele'];
@@ -72,7 +72,7 @@ if($_POST){
                 $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>';
             }else{
                 // insert (note: for production use prepared statements and hashed passwords)
-                $database->query("insert into patient(pemail,pname,ppassword, paddress, pnic,pdob,ptel) values('$email','$name','$newpassword','$address','$nic','$dob','$tele');");
+                $database->query("insert into patient(pemail,pname,ppassword, paddress, nric,pdob,ptel) values('$email','$name','$newpassword','$address','$nric','$dob','$tele');");
                 $database->query("insert into webuser values('$email','p')");
 
                 $_SESSION["user"]=$email;
