@@ -28,19 +28,19 @@
 
     if($_POST){
         if(isset($_POST["booknow"])){
-            $apponum=$_POST["apponum"];
             $scheduleid=$_POST["scheduleid"];
             $date=$_POST["date"];
             // Check if slot is already booked
             $check = $database->query("SELECT * FROM appointment WHERE scheduleid=$scheduleid");
             if ($check->num_rows > 0) {
-                // Slot already booked, redirect to appointment page without appointment number
+                // Slot already booked, redirect to appointment page
                 header("location: appointment.php?action=slot-booked");
                 exit();
             } else {
-                $sql2="insert into appointment(pid,apponum,scheduleid,appodate) values ($userid,$apponum,$scheduleid,'$date')";
+                $sql2="insert into appointment(pid,scheduleid,appodate) values ($userid,$scheduleid,'$date')";
                 $result= $database->query($sql2);
-                header("location: appointment.php?action=booking-added&id=".$apponum."&titleget=none");
+                $ref_number = $database->insert_id;
+                header("location: appointment.php?action=booking-added&id=".$ref_number."&titleget=none");
                 exit();
             }
         }

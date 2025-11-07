@@ -225,11 +225,9 @@
                                         // Slot is already booked
                                         echo '<td colspan="2"><div class="dashboard-items search-items"><div style="width:100%;padding:30px;text-align:center;"><h2 style="color:red;">This slot is already booked.</h2><p>Please choose another session.</p></div></div></td>';
                                     } else {
-                                        $apponum=($result12->num_rows)+1;
                                         echo '
                                         <form action="booking-complete.php" method="post">
                                             <input type="hidden" name="scheduleid" value="'.$scheduleid.'" >
-                                            <input type="hidden" name="apponum" value="'.$apponum.'" >
                                             <input type="hidden" name="date" value="'.$today.'" >
                                             <td style="width: 50%;" rowspan="2">
                                                 <div  class="dashboard-items search-items"  >
@@ -262,10 +260,10 @@
                                             
                                                 <div style="width:100%;padding-top: 15px;padding-bottom: 15px;">
                                                         <div class="h1-search" style="font-size:20px;line-height: 35px;margin-left:8px;text-align:center;">
-                                                            Your Appointment Number
+                                                            Reference Number (after booking)
                                                         </div>
                                                         <center>
-                                                            <div class="dashboard-icons" style="margin-left: 0px;width:90%;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$apponum.'</div>
+                                                            <div class="dashboard-icons" style="margin-left: 0px;width:90%;font-size:30px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">Will be shown after booking</div>
                                                         </center>
                                                         <br>
                                                         
@@ -281,7 +279,7 @@
                                             </form>
                                             </td>
                                         </tr>
-                                        '; 
+                                        ';
                                         
 
 

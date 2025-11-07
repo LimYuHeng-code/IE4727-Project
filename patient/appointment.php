@@ -52,7 +52,7 @@
 
     //TODO
     // Only show appointments for slots that are actually booked by this patient
-    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid where patient.pid=$userid ";
+    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid where patient.pid=$userid ";
 
     if($_POST){
         //print_r($_POST);
@@ -252,7 +252,7 @@
                                             $docname=$row["docname"];
                                             $scheduledate=$row["scheduledate"];
                                             $scheduletime=$row["scheduletime"];
-                                            $apponum=$row["apponum"];
+                                            // $apponum removed
                                             $appodate=$row["appodate"];
                                             $appoid=$row["appoid"];
     
@@ -273,20 +273,14 @@
                                                                     '.substr($title,0,21).'<br>
                                                                 </div>
                                                                 <div class="h3-search">
-                                                                    Appointment Number:<div class="h1-search">0'.$apponum.'</div>
-                                                                </div>
-                                                                <div class="h3-search">
                                                                     '.substr($docname,0,30).'
                                                                 </div>
-                                                                
-                                                                
                                                                 <div class="h4-search">
                                                                     Scheduled Date: '.$scheduledate.'<br>Starts: <b>@'.substr($scheduletime,0,5).'</b> (24h)
                                                                 </div>
                                                                 <br>
                                                                 <a href="?action=drop&id='.$appoid.'&title='.$title.'&doc='.$docname.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cancel Booking</font></button></a>
                                                         </div>
-                                                                
                                                     </div>
                                                 </td>';
     
@@ -358,20 +352,17 @@
         $id=$_GET["id"] ?? null;
         $action=$_GET["action"] ?? null;
         if($action=='booking-added'){
-            
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
                     <br><br>
-                        <h2>Booking Successfully.</h2>
+                        <h2>Booking Successful.</h2>
                         <a class="close" href="appointment.php">&times;</a>
                         <div class="content">
-                        Your Appointment number is '.$id.'.<br><br>
-                            
+                        Your Reference Number is OC-000-'.$id.'.<br><br>
                         </div>
                         <div style="display: flex;justify-content: center;">
-                        
                         <a href="appointment.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
                         <br><br><br><br>
                         </div>
@@ -381,18 +372,18 @@
             ';
         }elseif($action=='slot-booked'){
             echo '
-            <div id="popup1" class="overlay">
-            <div class="popup">
+            <div id="popup1" class="overlay" style="z-index:9999;">
+            <div class="popup" style="border:2px solid #e74c3c;background:#fff3f3;">
             <center>
                 <br><br>
-                <h2>Slot Already Booked</h2>
+                <h2 style="color:#e74c3c;">Slot Already Booked</h2>
                 <a class="close" href="appointment.php">&times;</a>
-                <div class="content">
+                <div class="content" style="color:#c0392b;font-size:18px;">
                 Sorry, this slot has already been booked by another patient.<br><br>
                 Please choose another session.
                 </div>
                 <div style="display: flex;justify-content: center;">
-                <a href="appointment.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
+                <a href="appointment.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;background:#e74c3c;border:none;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
                 <br><br><br><br>
                 </div>
             </center>

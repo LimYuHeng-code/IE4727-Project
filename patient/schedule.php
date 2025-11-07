@@ -260,6 +260,13 @@
                                             break;
                                         }
 
+                                        // Check if this session is already booked by any patient
+                                        $check_appointment = $database->query("SELECT * FROM appointment WHERE scheduleid='$scheduleid'");
+                                        if ($check_appointment->num_rows > 0) {
+                                            // Slot is booked, hide it for all patients
+                                            continue;
+                                        }
+
                                         echo '
                                         <td style="width: 25%;">
                                                 <div  class="dashboard-items search-items"  >
