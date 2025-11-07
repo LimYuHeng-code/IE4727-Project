@@ -36,6 +36,7 @@
                 // Slot already booked, redirect to appointment page
                 header("location: appointment.php?action=slot-booked");
                 exit();
+                //This block books the appointment, gets its unique reference number, and redirects the user to a confirmation page.
             } else {
                 $sql2="insert into appointment(pid,scheduleid,appodate) values ($userid,$scheduleid,'$date')";
                 $result= $database->query($sql2);

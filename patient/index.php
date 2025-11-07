@@ -282,10 +282,7 @@
                                             
                                         <tr>
                                         <th class="table-headin">
-                                                    
-                                                
-                                                    Appoint. Number
-                                                    
+                                                    Appointment Reference No.
                                                     </th>
                                                 <th class="table-headin">
                                                     
@@ -335,14 +332,14 @@
                                                     $row=$result->fetch_assoc();
                                                     $scheduleid=$row["scheduleid"];
                                                     $title=$row["title"];
-                                                    $apponum=$row["apponum"];
+                                                    $appoid=$row["appoid"];
                                                     $docname=$row["docname"];
                                                     $scheduledate=$row["scheduledate"];
                                                     $scheduletime=$row["scheduletime"];
                                                    
                                                     echo '<tr>
                                                         <td style="padding:30px;font-size:25px;font-weight:700;"> &nbsp;'.
-                                                        $apponum
+                                                        $appoid
                                                         .'</td>
                                                         <td style="padding:20px;"> &nbsp;'.
                                                         substr($title,0,30)

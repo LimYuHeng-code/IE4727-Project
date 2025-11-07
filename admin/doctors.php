@@ -312,7 +312,7 @@
             $spcil_res= $database->query("select sname from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
+            $mcr=$row['docmcr'];
             $tele=$row['doctel'];
             echo '
             <div id="popup1" class="overlay">
@@ -357,12 +357,12 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="mcr" class="form-label">MCR: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$nic.'<br><br>
+                                '.$mcr.'<br><br>
                                 </td>
                             </tr>
                             <tr>
@@ -458,19 +458,25 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="mcr" class="form-label">MCR: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="nic" class="input-text" placeholder="NIC Number" required><br>
+                                    <input type="text" name="mcr" class="input-text" placeholder="e.g. M01234C" pattern="^M\d{5}[A-Za-z]$" required><br>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td class="label-td" colspan="2">
+                                    <label for="tele" class="form-label">Telephone: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                   <input type="tel" name="tele" class="input-text" placeholder="e.g. +65 91234567 or 81234567" pattern="^(\+65\s?)?[89][0-9]{7}$" required>
+                                   <input type="tel" name="tele" class="input-text" placeholder="e.g. +65 61234567" pattern="^6[0-9]{7}$" required>
                                 </td>
                             </tr>
+                             
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <label for="spec" class="form-label">Choose specialties: </label>
@@ -504,16 +510,16 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="password" class="input-text" placeholder="Defind a Password" required><br>
+                                    <input type="password" name="password" class="input-text" placeholder="Define a Password" required><br>
                                 </td>
                             </tr><tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="cpassword" class="form-label">Conform Password: </label>
+                                    <label for="cpassword" class="form-label">Confirm Password: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
+                                    <input type="password" name="cpassword" class="input-text" placeholder="Confirm Password" required><br>
                                 </td>
                             </tr>
                             
@@ -572,7 +578,7 @@
             $spcil_res= $database->query("select sname from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
+            $mcr=$row['docmcr'];
             $tele=$row['doctel'];
 
             $error_1=$_GET["error"];
@@ -634,12 +640,12 @@
                                     
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="nic" class="form-label">NIC: </label>
+                                            <label for="mcr" class="form-label">MCR: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="nic" class="input-text" placeholder="NIC Number" value="'.$nic.'" required><br>
+                                            <input type="text" name="mcr" class="input-text" placeholder="MCR Number" value="'.$mcr.'" required><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -685,16 +691,16 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="password" class="input-text" placeholder="Defind a Password" required><br>
+                                            <input type="password" name="password" class="input-text" placeholder="Define  a Password" required><br>
                                         </td>
                                     </tr><tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="cpassword" class="form-label">Conform Password: </label>
+                                            <label for="cpassword" class="form-label">Confirm Password: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
+                                            <input type="password" name="cpassword" class="input-text" placeholder="Confirm Password" required><br>
                                         </td>
                                     </tr>
                                     

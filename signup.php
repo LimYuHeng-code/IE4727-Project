@@ -56,7 +56,7 @@ if($_POST){
         'fname'=>$_POST['fname'],
         'lname'=>$_POST['lname'],
         'address'=>$_POST['address'],
-        'nic'=>$_POST['nic'],
+        'nric'=>$_POST['nric'],
         'dob'=>$_POST['dob']
     );
 
@@ -107,12 +107,12 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <label for="nic" class="form-label">NRIC: </label>
+                    <label for="nric" class="form-label">NRIC: </label>
                 </td>
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="text" name="nic" class="input-text" placeholder="NRIC Number" required>
+                    <input type="text" name="nric" class="input-text" placeholder="e.g. S1234567D" pattern="^[ST]\d{7}[A-Za-z]$" required>
                 </td>
             </tr>
             <tr>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,7 +154,6 @@ include("../connection.php");
             echo '<th class="table-headin">Doctor</th>';
             echo '<th class="table-headin">Scheduled Date</th>';
             echo '<th class="table-headin">Scheduled Time</th>';
-            echo '<th class="table-headin">Max Patients</th>';
             echo '<th class="table-headin">Events</th>';
             echo '</tr></thead><tbody>';
             if ($list110->num_rows == 0) {
@@ -169,7 +169,6 @@ include("../connection.php");
                     echo '<td>' . htmlspecialchars($docname) . '</td>';
                     echo '<td>' . htmlspecialchars($row['scheduledate']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['scheduletime']) . '</td>';
-                    echo '<td>' . htmlspecialchars($row['nop']) . '</td>';
                     echo '<td>';
                     echo '<a href="?action=view&id=' . $row['scheduleid'] . '" class="non-style-link"><button class="btn-primary-soft btn button-icon btn-view">View</button></a> ';
                     echo '<a href="?action=drop&id=' . $row['scheduleid'] . '&name=' . urlencode($row['title']) . '" class="non-style-link"><button class="btn-primary-soft btn button-icon btn-delete">Remove</button></a>';
@@ -217,33 +216,11 @@ if ($_GET) {
 
                                 echo '</select><br><br>
 
-                                            <label for="nop" class="form-label">Number of Patients per Session:</label>
-                                            <input type="number" name="nop" class="input-text" min="1" required><br>
-
                                             <label class="form-label">Session Dates & Times:</label>
                                             <div id="timeslot-container">
                                                 <div class="timeslot">
                                                     <input type="date" name="date[]" class="input-text" min="'.date('Y-m-d').'" required>
-                                                    <select name="time[]" class="input-text" required>
-                                                        <option value="" disabled selected hidden>Choose Time</option>
-                                                        <option value="09:00">09:00</option>
-                                                        <option value="09:30">09:30</option>
-                                                        <option value="10:00">10:00</option>
-                                                        <option value="10:30">10:30</option>
-                                                        <option value="11:00">11:00</option>
-                                                        <option value="11:30">11:30</option>
-                                                        <option value="12:00">12:00</option>
-                                                        <option value="12:30">12:30</option>
-                                                        <option value="13:00">13:00</option>
-                                                        <option value="13:30">13:30</option>
-                                                        <option value="14:00">14:00</option>
-                                                        <option value="14:30">14:30</option>
-                                                        <option value="15:00">15:00</option>
-                                                        <option value="15:30">15:30</option>
-                                                        <option value="16:00">16:00</option>
-                                                        <option value="16:30">16:30</option>
-                                                        <option value="17:00">17:00</option>
-                                                    </select>
+                                                    <input type="time" name="time[]" class="input-text" required>
                                                 </div>
                                             </div>
                                             <button type="button" onclick="addTimeslot()" class="login-btn btn-primary-soft btn" style="margin-top:10px;">+ Add Another Timeslot</button>

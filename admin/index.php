@@ -290,7 +290,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                            $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                            $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
 
                                                 $result= $database->query($sqlmain);
                 
@@ -321,14 +321,13 @@
                                                     $scheduledate=$row["scheduledate"];
                                                     $scheduletime=$row["scheduletime"];
                                                     $pname=$row["pname"];
-                                                    $apponum=$row["apponum"];
+                                                    // $apponum removed, use appoid as appointment number
                                                     $appodate=$row["appodate"];
                                                     echo '<tr>
 
 
                                                         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);padding:20px;">
-                                                            '.$apponum.'
-                                                            
+                                                            OC-000-'.$appoid.'
                                                         </td>
 
                                                         <td style="font-weight:600;"> &nbsp;'.
