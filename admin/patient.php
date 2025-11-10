@@ -30,8 +30,6 @@
             header("location: ../login.php");
         }
 
-    }else{
-        header("location: ../login.php");
     }
     
     
@@ -351,7 +349,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="nric" class="form-label">NRIC: </label>
                                 </td>
                             </tr>
                             <tr>
