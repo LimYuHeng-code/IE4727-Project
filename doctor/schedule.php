@@ -186,7 +186,7 @@
                 ?>
                   
                 <tr>
-                   <td colspan="4">
+                   <td colspan="3">
                        <center>
                         <div class="abc scroll">
                         <table width="93%" class="sub-table scrolldown" border="0">
@@ -205,11 +205,7 @@
                                     Sheduled Date & Time
                                     
                                 </th>
-                                <th class="table-headin">
-                                    
-                                Max num that can be booked
-                                    
-                                </th>
+                            
                                 
                                 <th class="table-headin">
                                     
@@ -249,7 +245,7 @@
                                     $docname=$row["docname"];
                                     $scheduledate=$row["scheduledate"];
                                     $scheduletime=$row["scheduletime"];
-                                    $nop=$row["nop"];
+                                   
                                     echo '<tr>
                                         <td> &nbsp;'.
                                         substr($title,0,30)
@@ -258,9 +254,7 @@
                                         <td style="text-align:center;">
                                             '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
                                         </td>
-                                        <td style="text-align:center;">
-                                            '.$nop.'
-                                        </td>
+                                       
 
                                         <td>
                                         <div style="display:flex;justify-content: center;">
@@ -416,7 +410,7 @@
                                          </th>
                                          <th class="table-headin">
                                              
-                                             Appointment number
+                                             Appointment Reference ID
                                              
                                          </th>
                                         
@@ -453,7 +447,7 @@
                                          else{
                                          for ( $x=0; $x<$result->num_rows;$x++){
                                              $row=$result->fetch_assoc();
-                                             $apponum=$row["apponum"];
+                                             $appoid=$row["appoid"];
                                              $pid=$row["pid"];
                                              $pname=$row["pname"];
                                              $ptel=$row["ptel"];
@@ -467,7 +461,7 @@
                                                  substr($pname,0,25)
                                                  .'</td >
                                                  <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                                 '.$apponum.'
+                                                 '.$appoid.'
                                                  
                                                  </td>
                                                  <td>

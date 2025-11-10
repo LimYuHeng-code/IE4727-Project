@@ -321,7 +321,7 @@
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            Clinic Connect Web App<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">

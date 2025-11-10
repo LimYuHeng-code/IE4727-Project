@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `docemail` varchar(255) DEFAULT NULL,
   `docname` varchar(255) DEFAULT NULL,
   `docpassword` varchar(255) DEFAULT NULL,
-  `docnic` varchar(15) DEFAULT NULL,
+  `docmcr` varchar(15) DEFAULT NULL,
   `doctel` varchar(15) DEFAULT NULL,
   `specialties` int(2) DEFAULT NULL,
   PRIMARY KEY (`docid`),
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `doctel`, `specialties`) VALUES
+INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docmcr`, `doctel`, `specialties`) VALUES
 (1, 'doctor@edoc.com', 'Test Doctor', '123', '000000000', '0110000000', 1);
 
 -- --------------------------------------------------------

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,7 +189,7 @@ if ($_GET) {
 
     // ✨ MODIFIED ADD-SESSION POPUP ✨
     if ($action == 'add-session') {
-        echo '
+        ?>
         <div id="popup1" class="overlay">
             <div class="popup">
                 <center>
@@ -207,20 +206,22 @@ if ($_GET) {
 
                                             <label for="docid" class="form-label">Select Doctor: </label>
                                             <select name="docid" class="box" required>
-                                                <option value="" disabled selected hidden>Choose Doctor</option>';
-                                                
+                                                <option value="" disabled selected hidden>Choose Doctor</option>
+                                                <?php
                                                 $list11 = $database->query("select * from doctor order by docname asc;");
                                                 while ($row00 = $list11->fetch_assoc()) {
                                                     echo "<option value='{$row00['docid']}'>{$row00['docname']}</option>";
                                                 }
-
-                                echo '</select><br><br>
+                                                ?>
+                                            </select><br><br>
 
                                             <label class="form-label">Session Dates & Times:</label>
                                             <div id="timeslot-container">
                                                 <div class="timeslot">
-                                                    <input type="date" name="date[]" class="input-text" min="'.date('Y-m-d').'" required>
-                                                    <input type="time" name="time[]" class="input-text" required>
+                                                    <input type="date" name="date[]" class="input-text" min="<?php echo date('Y-m-d'); ?>" required>
+                                                    <select name="time[]" class="input-text" required id="initial-time-select">
+                                                        <option value="" disabled selected hidden>Select Time</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <button type="button" onclick="addTimeslot()" class="login-btn btn-primary-soft btn" style="margin-top:10px;">+ Add Another Timeslot</button>
@@ -238,22 +239,43 @@ if ($_GET) {
                 </center>
             </div>
         </div>
- 
         <script>
+        // Fill time options for a given select element
+        function fillTimeOptions(selectElem) {
+            let timeOptions = '<option value="" disabled selected hidden>Select Time</option>';
+            for (let hour = 0; hour < 24; hour++) {
+                for (let min of ["00", "30"]) {
+                    let h = hour.toString().padStart(2, '0');
+                    timeOptions += `<option value="${h}:${min}">${h}:${min}</option>`;
+                }
+            }
+            selectElem.innerHTML = timeOptions;
+        }
+
         // This lets you add multiple session timeslots dynamically in the form, and remove them if needed.
         function addTimeslot() {
             const container = document.getElementById("timeslot-container");
             const div = document.createElement("div");
             div.className = "timeslot";
+            let selectId = "time-select-" + Math.random().toString(36).substr(2, 9);
             div.innerHTML = `
-                <input type="date" name="date[]" class="input-text" min="${new Date().toISOString().split("T")[0]}" required>
-                <input type="time" name="time[]" class="input-text" required>
+                <input type="date" name="date[]" class="input-text date" min="${new Date().toISOString().split("T")[0]}" required>
+                <select name="time[]" class="input-text" required id="${selectId}"></select>
                 <button type="button" onclick="this.parentElement.remove()" class="login-btn btn-primary-soft btn">Remove</button>
             `;
             container.appendChild(div);
+            fillTimeOptions(div.querySelector('select'));
         }
+
+        // Fill initial time dropdown on popup load
+        document.addEventListener('DOMContentLoaded', function() {
+            var initialSelect = document.getElementById('initial-time-select');
+            if (initialSelect) {
+                fillTimeOptions(initialSelect);
+            }
+        });
         </script>
-        ';
+        <?php
     }
 //Delete Session Popup
     if ($action == 'drop') {
