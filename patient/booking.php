@@ -246,7 +246,7 @@
                                                             Session Title: '.$title.'<br>
                                                             Session Scheduled Date: '.$scheduledate.'<br>
                                                             Session Starts : '.$scheduletime.'<br>
-                                                            Channeling fee : <b>LKR.2 000.00</b>
+                                                           
 
                                                         </div>
                                                         <br>
@@ -312,7 +312,7 @@
     
    
     </div>
-
+    /*
     <?php
 if($_GET){
     $id=$_GET["id"] ?? null;
@@ -342,4 +342,5 @@ if($_GET){
     }
     // ...existing code...
 }
-?>
+?> 
+*/
